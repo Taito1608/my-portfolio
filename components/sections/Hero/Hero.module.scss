@@ -1,0 +1,17 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.title {
+  font-size: 6rem;
+  font-weight: 700;
+}
+
+.description {
+  margin-top: 1rem;
+}
