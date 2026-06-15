@@ -1,0 +1,72 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6px);
+  z-index: 100;
+}
+
+.drawer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: white;
+  border-radius: 24px 24px 0 0;
+  padding: 3rem;
+  z-index: 101;
+}
+
+.close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 2rem;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.detail {
+  margin-top: 1.5rem;
+  line-height: 2;
+  color: var(--color-sub-text);
+}
+
+.techList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.techList li {
+  color: var(--color-sub-text);
+}
+
+.links {
+  display: flex;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.links a {
+  font-weight: 700;
+  transition: opacity .3s;
+}
+
+.links a:hover {
+  opacity: .6;
+}

@@ -1,17 +1,35 @@
 .hero {
   min-height: 100vh;
+
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+
   align-items: center;
-  text-align: center;
+}
+
+.inner {
+  width: 100%;
 }
 
 .title {
-  font-size: 6rem;
+  font-size: clamp(4rem, 10vw, 7rem);
+
   font-weight: 700;
+
+  line-height: 1.1;
 }
 
 .description {
   margin-top: 1rem;
+
+  font-size: 1.25rem;
+}
+
+.scroll {
+  display: inline-block;
+
+  margin-top: 5rem;
+
+  color: var(--color-sub-text);
+
+  font-size: 0.9rem;
 }

@@ -1,6 +1,7 @@
-import styles from "./Hero.module.scss";
 import Container from "@/components/layout/Container/Container";
 import Signature from "@/components/common/Signature/Signature";
+
+import styles from "./Hero.module.scss";
 
 export default function Hero() {
   return (
@@ -8,13 +9,19 @@ export default function Hero() {
       <Container>
         <Signature duration={7} stagger={0.12} />
 
-        <h1 className={styles.title}>
-          Taito Yusa
-        </h1>
+        <div className={styles.inner}>
+          <h1 className={styles.title}>
+            Taito Yusa
+          </h1>
 
-        <p className={styles.description}>
-          Full Stack Developer
-        </p>
+          <p className={styles.description}>
+            Frontend / Backend Developer
+          </p>
+
+          <span className={styles.scroll}>
+            Scroll
+          </span>
+        </div>
       </Container>
     </section>
   );

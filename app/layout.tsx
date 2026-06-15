@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+
 import { Noto_Sans_JP } from "next/font/google";
 
 import Header from "@/components/layout/Header/Header";
+
 import Footer from "@/components/layout/Footer/Footer";
 
 import "./globals.scss";
@@ -12,14 +14,15 @@ const notoSansJP = Noto_Sans_JP({
 
 export const metadata: Metadata = {
   title: "Taito Yusa",
-  description: "Portfolio website of Taito Yusa",
+
+  description: "Portfolio website",
 };
 
-type Props = {
+export default function RootLayout({
+  children,
+}: Readonly<{
   children: React.ReactNode;
-};
-
-export default function RootLayout({ children }: Props) {
+}>) {
   return (
     <html lang="ja">
       <body className={notoSansJP.className}>

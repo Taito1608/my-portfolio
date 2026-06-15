@@ -1,0 +1,45 @@
+.header {
+  position: fixed;
+
+  top: 0;
+
+  width: 100%;
+
+  height: var(--header-height);
+
+  background: rgba(255, 255, 255, 0.8);
+
+  backdrop-filter: blur(10px);
+
+  z-index: 100;
+}
+
+.inner {
+  height: 100%;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.1rem;
+
+  font-weight: 700;
+}
+
+.navList {
+  display: flex;
+
+  gap: 2rem;
+}
+
+.navList a {
+  transition: opacity 0.3s;
+}
+
+.navList a:hover {
+  opacity: 0.6;
+}

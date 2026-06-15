@@ -1,45 +1,42 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import Image from "next/image";
+import type { Work } from "@/types/work";
 import styles from "./WorkCard.module.scss";
 
+type Props = {
+  work: Work;
+
+  onClick?: () => void;
+};
+
 export default function WorkCard({
-  title,
-  description,
-  imageUrl,
-}: {
-  title: string;
-  description: string;
-  imageUrl?: string;
-}) {
-  const placeholder = "/images/placeholder.svg";
-  const [src, setSrc] = useState<string>(placeholder);
+  work,
 
-  useEffect(() => {
-    if (!imageUrl) return;
-    const probe = new Image();
-    probe.src = imageUrl;
-    probe.onload = () => setSrc(imageUrl);
-    // onerror: keep placeholder
-    return () => {
-      probe.onload = null;
-      probe.onerror = null;
-    };
-  }, [imageUrl]);
-
+  onClick,
+}: Props) {
   return (
-    <article className={styles.card}>
-      <img
-        className={styles.media}
-        src={src}
-        alt={title}
-        onError={() => {
-          if (src !== placeholder) setSrc(placeholder);
-        }}
-      />
+    <article
+      className={styles.card}
+      onClick={onClick}
+    >
+      <div className={styles.imageWrapper}>
+        <Image
+          src={work.imageUrl}
+          alt={work.title}
+          fill
+          className={styles.media}
+        />
+      </div>
+
       <div className={styles.body}>
-        <h3 className={styles.title}>{title}</h3>
-        <p className={styles.desc}>{description}</p>
+        <h3 className={styles.title}>
+          {work.title}
+        </h3>
+
+        <p className={styles.desc}>
+          {work.description}
+        </p>
       </div>
     </article>
   );

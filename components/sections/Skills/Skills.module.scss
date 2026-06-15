@@ -1,0 +1,37 @@
+.skills {
+  padding: var(--section-padding) 0;
+}
+
+.title {
+  margin-bottom: 5rem;
+}
+
+.category:not(:last-child) {
+  margin-bottom: 5rem;
+}
+
+.categoryTitle {
+  margin-bottom: 2rem;
+
+  color: var(--color-sub-text);
+
+  font-size: 1rem;
+
+  font-weight: 500;
+}
+
+.skillList {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 1.5rem 3rem;
+}
+
+.skillList li {
+  font-size: 2rem;
+
+  font-weight: 600;
+
+  line-height: 1.4;
+}

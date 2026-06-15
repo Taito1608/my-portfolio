@@ -1,0 +1,39 @@
+.contact {
+  padding: var(--section-padding) 0;
+}
+
+.heading {
+  margin-bottom: 2rem;
+}
+
+.description {
+  margin-bottom: 4rem;
+
+  max-width: 500px;
+}
+
+.links {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2rem;
+}
+
+.links a {
+  display: inline-block;
+
+  font-size: 2rem;
+
+  font-weight: 700;
+
+  transition:
+    opacity .3s ease,
+    transform .3s ease;
+}
+
+.links a:hover {
+  opacity: 0.6;
+
+  transform: translateX(8px);
+}
