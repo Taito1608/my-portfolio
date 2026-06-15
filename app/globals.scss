@@ -1,12 +1,7 @@
 @use "../styles/base/reset";
 @use "../styles/base/typography";
+@use "../styles/abstracts/variables";
 
 body {
-  background: #fff;
-  color: #111;
-}
-
-/* Hide in-page signature while intro overlay is active */
-.has-signature-overlay .site-signature {
-  visibility: hidden;
+  background: var(--color-background);
 }
