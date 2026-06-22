@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 import { motion } from "framer-motion";
-
+import { fadeUp } from "@/components/common/Motion/fadeUp";
 import { works } from "@/data/works";
 
 import type { Work } from "@/types/work";
@@ -53,10 +53,10 @@ export default function Works() {
       <Container>
         <motion.h2
           className={styles.heading}
-          initial={{ opacity: 0, y: 6 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.48 }}
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
         >
           Works
         </motion.h2>

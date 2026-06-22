@@ -1,26 +1,36 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Container from "@/components/layout/Container/Container";
 import Signature from "@/components/common/Signature/Signature";
-
 import styles from "./Hero.module.scss";
 
 export default function Hero() {
   return (
-    <section className={styles.hero}>
+    <section
+      id="hero"
+      className={styles.hero}
+    >
       <Container>
-        <Signature duration={7} stagger={0.12} />
-
         <div className={styles.inner}>
-          <h1 className={styles.title}>
-            Taito Yusa
-          </h1>
+          <div className={styles.signatureWrapper}>
+            <Signature duration={7} />
+          </div>
 
-          <p className={styles.description}>
-            Frontend / Backend Developer
-          </p>
-
-          <span className={styles.scroll}>
+          <motion.a
+            href="#about"
+            className={styles.scroll}
+            animate={{
+              y: [0, 6, 0],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
             Scroll
-          </span>
+          </motion.a>
         </div>
       </Container>
     </section>

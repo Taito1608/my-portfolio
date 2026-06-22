@@ -1,45 +1,64 @@
 .header {
   position: fixed;
-
   top: 0;
-
+  left: 0;
   width: 100%;
-
-  height: var(--header-height);
-
-  background: rgba(255, 255, 255, 0.8);
-
-  backdrop-filter: blur(10px);
-
   z-index: 100;
+  transition:
+    background-color .4s ease,
+    backdrop-filter .4s ease;
+}
+
+.scrolled {
+  background: rgba(255,255,255,.75);
+  backdrop-filter: blur(16px);
 }
 
 .inner {
-  height: 100%;
-
+  height: 80px;
   display: flex;
-
-  justify-content: space-between;
-
   align-items: center;
+  justify-content: space-between;
 }
 
 .logo {
-  font-size: 1.1rem;
-
+  font-size: 1rem;
   font-weight: 700;
+  letter-spacing: .1em;
 }
 
-.navList {
+.nav {
   display: flex;
-
-  gap: 2rem;
+  gap: 2.5rem;
+  list-style: none;
 }
 
-.navList a {
-  transition: opacity 0.3s;
+.nav a {
+  position: relative;
+  color: var(--color-sub-text);
+  transition: color .3s;
 }
 
-.navList a:hover {
-  opacity: 0.6;
+.nav a:hover {
+  color: var(--color-text);
+}
+
+.active {
+  color: var(--color-text);
+}
+
+.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background: var(--color-text);
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
 }
