@@ -1,8 +1,6 @@
 .card {
   display: block;
-
   color: var(--color-text);
-
   transition:
     opacity 0.3s ease,
     transform 0.3s ease;
@@ -14,17 +12,13 @@
 
 .imageWrapper {
   position: relative;
-
   overflow: hidden;
-
   aspect-ratio: 16 / 9;
-
   border-radius: 6px;
 }
 
 .media {
   object-fit: cover;
-
   transition: transform 0.4s ease;
 }
 
@@ -37,19 +31,15 @@
 }
 
 .title {
+  color: var(--color-text);
   font-size: 1.5rem;
-
   font-weight: 700;
-
   line-height: 1.4;
 }
 
 .desc {
   margin-top: 0.5rem;
-
   color: var(--color-sub-text);
-
   font-size: 1rem;
-
   line-height: 1.8;
 }

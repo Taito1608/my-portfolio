@@ -3,6 +3,7 @@
 }
 
 .title {
+  color: var(--color-text);
   margin-bottom: 5rem;
 }
 
@@ -12,26 +13,20 @@
 
 .categoryTitle {
   margin-bottom: 2rem;
-
   color: var(--color-sub-text);
-
   font-size: 1rem;
-
   font-weight: 500;
 }
 
 .skillList {
+  color: var(--color-text);
   display: flex;
-
   flex-wrap: wrap;
-
   gap: 1.5rem 3rem;
 }
 
 .skillList li {
   font-size: 2rem;
-
   font-weight: 600;
-
   line-height: 1.4;
 }

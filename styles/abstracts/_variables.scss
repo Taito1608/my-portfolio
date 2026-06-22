@@ -1,25 +1,21 @@
 :root {
-  --color-background: #ffffff;
-
-  --color-text: #111111;
-
-  --color-sub-text: #666666;
-
+  --color-background: #f5f5f5;
+  --color-text: #112234;
+  --color-sub-text: #3267a9;
   --color-border: #ececec;
-
   --max-width: 1100px;
-
   --header-height: 80px;
-
   --section-padding: 160px;
-
   --font-size-xs: 0.875rem;
-
   --font-size-sm: 1rem;
-
   --font-size-md: 1.5rem;
-
   --font-size-lg: 3rem;
-
   --font-size-xl: 5rem;
+}
+
+.dark {
+  --color-background: #112234;
+  --color-text: #f5f5f5;
+  --color-sub-text: #e3c097;
+  --color-border: #2a2a2a;
 }
