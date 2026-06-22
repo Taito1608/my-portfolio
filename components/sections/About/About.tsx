@@ -1,12 +1,19 @@
-import Container from "@/components/layout/Container/Container";
+"use client";
 
+import { motion } from "framer-motion";
+import Container from "@/components/layout/Container/Container";
+import { fadeUp } from "@/components/common/Motion/fadeUp";
 import styles from "./About.module.scss";
 
 export default function About() {
   return (
-    <section
+    <motion.section
       id="about"
       className={styles.about}
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.2 }}
     >
       <Container>
         <h2 className={styles.title}>
@@ -45,6 +52,6 @@ export default function About() {
           </li>
         </ul>
       </Container>
-    </section>
+    </motion.section>
   );
 }

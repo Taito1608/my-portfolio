@@ -70,3 +70,9 @@
 .links a:hover {
   opacity: .6;
 }
+
+@media (max-width:768px){
+  .drawer {
+    padding: 1.5rem;
+  }
+}

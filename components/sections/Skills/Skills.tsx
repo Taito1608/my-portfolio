@@ -1,12 +1,20 @@
+"use client";
+
 import Container from "@/components/layout/Container/Container";
 
+import { motion } from "framer-motion";
+import { fadeUp } from "@/components/common/Motion/fadeUp";
 import styles from "./Skills.module.scss";
 
 export default function Skills() {
   return (
-    <section
+    <motion.section
       id="skills"
       className={styles.skills}
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.2 }}
     >
       <Container>
         <h2 className={styles.title}>
@@ -51,6 +59,6 @@ export default function Skills() {
           </ul>
         </div>
       </Container>
-    </section>
+    </motion.section>
   );
 }

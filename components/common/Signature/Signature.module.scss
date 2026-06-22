@@ -1,56 +1,46 @@
 .wrapper {
-  width: 1000px;
-  max-width: 60vw;
+  width: 100%;
+  max-width: 900px;
   margin-inline: auto;
-  margin-bottom: 1rem;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
 
   svg {
     display: block;
+    width: 100%;
     height: auto;
+    overflow: visible;
   }
+}
 
-  svg:not(.line) {
-    width: min(1000px, 100%);
+.path {
+  fill: none;
+  stroke: #231815;
+  stroke-linecap: round;
+  stroke-miterlimit: 10;
+  stroke-width: 15;
+
+  /*
+   * getTotalLength()を使わずに固定の大きい値を使う。
+   * 実際のパス長より大きければ問題ない。
+   */
+  stroke-dasharray: 20000;
+  stroke-dashoffset: 20000;
+
+  animation: draw var(--duration, 7s) ease forwards;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    stroke-dashoffset: 0;
   }
+}
 
-  .line {
-    width: 12px;
-    height: 44px;
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
   }
+}
 
-  path,
-  line {
-    fill: none;
-    stroke: #231815;
-    stroke-linecap: round;
-    stroke-miterlimit: 10;
-  }
-
-  path {
-    stroke-width: 30px;
-  }
-
-  .line line {
-    stroke-width: 12px;
-  }
-
-  @keyframes draw {
-    to {
-      stroke-dashoffset: 0;
-    }
-  }
-
-  path[data-draw="true"],
-  line[data-draw="true"] {
-    animation-name: draw;
-    animation-duration: var(--draw-duration, 1.5s);
-    animation-fill-mode: forwards;
-    animation-timing-function: ease;
-    animation-delay: var(--draw-delay, 0s);
+@media (max-width: 768px) {
+  .wrapper {
+    max-width: 90vw;
   }
 }

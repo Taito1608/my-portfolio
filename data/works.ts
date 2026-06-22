@@ -1,17 +1,17 @@
 export const works = [
   {
     id: 1,
-    title: "Book Review App",
-    description: "Railsで作成した書籍レビューアプリ",
-    detail: "このアプリは、ユーザーが書籍のレビューを投稿できるプラットフォームです。ユーザーは、書籍のタイトル、著者、評価、レビュー内容を入力して投稿できます。また、他のユーザーのレビューを閲覧し、評価することも可能です。Dockerを使用して開発環境を構築し、PostgreSQLをデータベースとして利用しています。",
-    imageUrl: "/images/book-review.png",
+    title: "温度湿度センサーを用いたモニタリングシステム",
+    description: "Raspberry Piを用いた温度湿度モニタにングシステム",
+    detail: "このプロジェクトは、Raspberry Piを使用して温度と湿度をモニタリングするシステムです。センサーからデータを収集し、リアルタイムで表示するWebアプリケーションが特徴です。",
+    imageUrl: "/images/temperature-humidity-monitoring.png",
     githubUrl: "https://github.com/xxxxx",
-    demoUrl: "https://book-review-app.example.com",
+    demoUrl: "https://temperature-humidity-monitoring.example.com",
     technologies: [
-      "Ruby",
-      "Rails",
-      "PostgreSQL",
-      "Docker",
+      "Python",
+      "Flask",
+      "Raspberry Pi",
+      "DHT11 Sensor",
     ],
   },
 
