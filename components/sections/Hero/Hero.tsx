@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <section id="hero" className={styles.hero}>
       <div className={styles.signatureWrapper}>
-        <Signature duration={12} />
+        <Signature duration={7} />
       </div>
       <Container>
         <div className={styles.inner}>

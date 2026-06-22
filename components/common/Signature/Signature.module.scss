@@ -1,5 +1,5 @@
 .wrapper {
-  width: 100%;
+  width: 60%;
   margin-inline: auto;
 
   svg {
@@ -35,6 +35,7 @@
 
 @media (max-width: 768px) {
   .wrapper {
-    max-width: 90vw;
+    width: 100%;
+    max-width: none;
   }
 }
