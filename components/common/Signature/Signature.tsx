@@ -11,7 +11,7 @@ export default function Signature({
     <div className={styles.wrapper}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 2000 2000"
+        viewBox="280 850 1480 280"
         preserveAspectRatio="xMidYMid meet"
         aria-hidden
         focusable="false"

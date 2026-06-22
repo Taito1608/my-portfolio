@@ -7,27 +7,17 @@ import styles from "./Hero.module.scss";
 
 export default function Hero() {
   return (
-    <section
-      id="hero"
-      className={styles.hero}
-    >
+    <section id="hero" className={styles.hero}>
+      <div className={styles.signatureWrapper}>
+        <Signature duration={7} />
+      </div>
       <Container>
         <div className={styles.inner}>
-          <div className={styles.signatureWrapper}>
-            <Signature duration={7} />
-          </div>
-
           <motion.a
             href="#about"
             className={styles.scroll}
-            animate={{
-              y: [0, 6, 0],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           >
             Scroll
           </motion.a>
