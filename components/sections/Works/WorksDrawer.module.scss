@@ -1,8 +1,8 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(4px);
   z-index: 100;
 }
 
@@ -12,23 +12,44 @@
   left: 0;
   width: 100%;
   max-height: 90vh;
+  backdrop-filter: saturate(140%);
   overflow-y: auto;
   background: var(--color-background);
+  box-shadow: 0 -10px 40px rgba(0,0,0,0.08);
+  border-top: 1px solid rgba(0,0,0,0.06);
   border-radius: 24px 24px 0 0;
   padding: 3rem;
   z-index: 101;
 }
 
+[data-theme="dark"] .overlay {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+}
+
+[data-theme="dark"] .drawer {
+  background: rgba(25, 25, 25, 0.9);
+  box-shadow: 0 -10px 40px rgba(0,0,0,0.6);
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
 .close {
-  position: absolute;
+  position: fixed;
   top: 2rem;
   right: 2rem;
-  font-size: 2rem;
+  background: var(--color-sub-text);
+  color: var(--color-background);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  z-index: 102;
 }
 
 .imageWrapper {
   position: relative;
   width: 100%;
+  max-width: 800px;
+  margin: 0 auto 2rem;
   aspect-ratio: 16 / 9;
   overflow: hidden;
   border-radius: 8px;
