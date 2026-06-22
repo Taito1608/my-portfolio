@@ -4,14 +4,11 @@
   left: 0;
   width: 100%;
   z-index: 100;
+  margin: 0 auto;
+  padding: 0 5rem;
   transition:
     background-color .4s ease,
     backdrop-filter .4s ease;
-}
-
-.scrolled {
-  background: rgba(255,255,255,.75);
-  backdrop-filter: blur(16px);
 }
 
 .inner {
@@ -73,8 +70,37 @@
   gap: 2rem;
 }
 
+.logoSvg {
+  height: 38px;
+  width: auto;
+  display: block;
+}
+
+.logoSvg path {
+  stroke: var(--color-text);
+  stroke-width: 20px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  transition: stroke 0.3s ease;
+}
+
+.logoSvg:hover path {
+  stroke: var(--color-sub-text);
+}
+
 @media (max-width: 768px) {
   .nav {
     display: none;
+  }
+
+  .header {
+    padding: 0 1rem;
+    background-color: var(--color-background);
+  }
+
+  .scrolled {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
   }
 }

@@ -19,6 +19,8 @@ export default function Header() {
     const handleScroll = () => {
       const scrollY = window.scrollY + 120;
 
+      setIsScrolled(window.scrollY > 10);
+
       sections.forEach((id) => {
         const section = document.getElementById(id);
         if (!section) return;
@@ -37,7 +39,6 @@ export default function Header() {
 
   return (
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}>
-      <Container>
         <div className={styles.inner}>
           <a href="#hero" className={styles.logo}>
             
@@ -71,7 +72,6 @@ export default function Header() {
             </button>
           </div>
         </div>
-      </Container>
     </header>
   );
 }
