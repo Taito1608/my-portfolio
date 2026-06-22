@@ -27,14 +27,19 @@
 }
 
 .scroll {
-  margin-top: 2rem;
+  margin-top: 3rem;
   color: var(--color-sub-text);
-  font-size: 0.9rem;
+  font-size: 1.1rem;
+  font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   transition:
     opacity .3s ease,
     transform .3s ease;
+  opacity: 0;
+  animation: 
+    fadeIn 1s ease 9s forwards,
+    bounce 2s ease-in-out 9.8s infinite;
 }
 
 .scroll:hover {
@@ -44,16 +49,9 @@
 
 .scrollText {
   color: var(--color-sub-text);
-  font-size: .9rem;
-  letter-spacing: .15em;
+  font-size: 1.1rem;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-}
-
-.scrollLine {
-  position: relative;
-  width: 1px;
-  height: 80px;
-  background: #d9d9d9;
 }
 
 .scrollBar {
@@ -72,6 +70,11 @@
   animation: fadeIn 0.8s ease 0.1s forwards;
   opacity: 0;
   margin: 6rem 0;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
 }
 
 @keyframes fadeIn {

@@ -9,18 +9,13 @@ export default function Hero() {
   return (
     <section id="hero" className={styles.hero}>
       <div className={styles.signatureWrapper}>
-        <Signature duration={7} />
+        <Signature duration={12} />
       </div>
       <Container>
         <div className={styles.inner}>
-          <motion.a
-            href="#about"
-            className={styles.scroll}
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          >
+          <a href="#about" className={styles.scroll}>
             Scroll
-          </motion.a>
+          </a>
         </div>
       </Container>
     </section>
