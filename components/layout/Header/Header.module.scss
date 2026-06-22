@@ -57,6 +57,22 @@
   background: var(--color-text);
 }
 
+.themeToggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  padding-bottom: 4px;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
 @media (max-width: 768px) {
   .nav {
     display: none;

@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
-
 import { Noto_Sans_JP } from "next/font/google";
-
+import { ThemeProvider } from "next-themes";
 import Header from "@/components/layout/Header/Header";
-
 import Footer from "@/components/layout/Footer/Footer";
-
 import "./globals.scss";
 
 const notoSansJP = Noto_Sans_JP({
@@ -14,7 +11,6 @@ const notoSansJP = Noto_Sans_JP({
 
 export const metadata: Metadata = {
   title: "Taito Yusa",
-
   description: "Portfolio website",
 };
 
@@ -24,15 +20,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja">
+    <html lang="ja" suppressHydrationWarning>
       <body className={notoSansJP.className}>
-        <Header />
-
-        <main>
-          {children}
-        </main>
-
-        <Footer />
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Header />
+          <main>
+            {children}
+          </main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
