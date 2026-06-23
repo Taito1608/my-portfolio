@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import { Work } from "@/types/work";
 import { motion, AnimatePresence } from "framer-motion";
-import type { Work } from "@/types/work";
 import styles from "./WorksDrawer.module.scss";
 
 type Props = {
@@ -64,7 +64,7 @@ export default function WorksDrawer({
             </p>
 
             <ul className={styles.techList}>
-              {work.technologies.map((technology) => (
+              {work.technologies?.map((technology) => (
                 <li key={technology}>
                   {technology}
                 </li>

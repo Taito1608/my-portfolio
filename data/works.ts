@@ -1,4 +1,6 @@
-export const works = [
+import { Work } from "@/types/work";
+
+export const works: Work[] = [
   {
     id: 1,
     title: "温度湿度センサーを用いたモニタリングシステム",
