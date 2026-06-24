@@ -23,14 +23,29 @@ export default function Skills() {
 
         <div className={styles.category}>
           <h3 className={styles.categoryTitle}>
+            Languages
+          </h3>
+
+          <ul className={styles.skillList}>
+            <li>Ruby</li>
+            <li>Python</li>
+            <li>C / C++</li>
+            <li>JavaScript</li>
+            <li>TypeScript</li>
+            <li>SQL</li>
+            <li>Kotlin</li>
+          </ul>
+        </div>
+
+        <div className={styles.category}>
+          <h3 className={styles.categoryTitle}>
             Frontend
           </h3>
 
           <ul className={styles.skillList}>
             <li>HTML</li>
             <li>CSS</li>
-            <li>JavaScript</li>
-            <li>TypeScript</li>
+            <li>Tailwind CSS</li>
             <li>React</li>
             <li>Next.js</li>
           </ul>
@@ -38,12 +53,26 @@ export default function Skills() {
 
         <div className={styles.category}>
           <h3 className={styles.categoryTitle}>
-            Backend
+            Backend / DB
           </h3>
 
           <ul className={styles.skillList}>
-            <li>Ruby</li>
-            <li>Ruby on Rails</li>
+            <li>fastAPI</li>
+            <li>flask</li>
+            <li>PostgreSQL</li>
+            <li>MariaDB</li>
+            <li>SQLite</li>
+          </ul>
+        </div>
+
+        <div className={styles.category}>
+          <h3 className={styles.categoryTitle}>
+            IoT
+          </h3>
+
+          <ul className={styles.skillList}>
+            <li>Raspberry Pi</li>
+            <li>Arduino</li>
           </ul>
         </div>
 
@@ -56,6 +85,7 @@ export default function Skills() {
             <li>Git</li>
             <li>GitHub</li>
             <li>Docker</li>
+            <li>Vercel</li>
           </ul>
         </div>
       </Container>
