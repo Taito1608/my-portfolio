@@ -18,14 +18,26 @@ export default function WorksDrawer({
 }: Props) {
 
   useEffect(() => {
-    if (work) {
-      document.documentElement.classList.add("drawer-open");
-    } else {
-      document.documentElement.classList.remove("drawer-open");
-    }
+    if (!work) return;
+
+    const scrollY = window.scrollY;
+
+    document.documentElement.style.setProperty(
+      "--scroll-y",
+      `${scrollY}px`
+    );
+
+    document.body.classList.add("drawer-open");
 
     return () => {
-      document.documentElement.classList.remove("drawer-open");
+      document.body.classList.remove("drawer-open");
+
+      const y = parseInt(
+        document.documentElement.style.getPropertyValue("--scroll-y") || "0",
+        10
+      );
+
+      window.scrollTo(0, y);
     };
   }, [work]);
 
