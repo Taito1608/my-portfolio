@@ -18,20 +18,14 @@ export default function WorksDrawer({
 }: Props) {
 
   useEffect(() => {
-    if (!work) return;
-
-    const scrollY = window.scrollY;
-
-    document.body.style.position = "fixed";
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.width = "100%";
+    if (work) {
+      document.documentElement.classList.add("drawer-open");
+    } else {
+      document.documentElement.classList.remove("drawer-open");
+    }
 
     return () => {
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.width = "";
-
-      window.scrollTo(0, scrollY);
+      document.documentElement.classList.remove("drawer-open");
     };
   }, [work]);
 
