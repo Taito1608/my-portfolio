@@ -13,5 +13,13 @@ html {
 }
 
 html.drawer-open {
+  position: fixed;
   overflow: hidden;
+
+  top: calc(var(--scroll-y) * -1);
+  left: 0;
+
+  width: 100%;
+
+  overscroll-behavior: none;
 }
