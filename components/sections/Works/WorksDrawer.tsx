@@ -22,22 +22,18 @@ export default function WorksDrawer({
 
     const scrollY = window.scrollY;
 
-    document.documentElement.style.setProperty(
-      "--scroll-y",
-      `${scrollY}px`
-    );
-
-    document.body.classList.add("drawer-open");
+    document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = "100%";
 
     return () => {
-      document.body.classList.remove("drawer-open");
+      document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
 
-      const y = parseInt(
-        document.documentElement.style.getPropertyValue("--scroll-y") || "0",
-        10
-      );
-
-      window.scrollTo(0, y);
+      window.scrollTo({ top: scrollY, behavior: "instant" });
     };
   }, [work]);
 
