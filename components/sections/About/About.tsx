@@ -21,33 +21,24 @@ export default function About() {
         </h2>
 
         <p className={styles.description}>
-          こんにちは、Taito Yusaです。
+          こんにちは、Taitoと申します。
         </p>
 
         <p className={styles.description}>
-          JavaScript、Railsを中心に学習しています。
-          現在はフロントエンド・バックエンドの両方に興味があり、
-          個人開発を通して技術力向上に取り組んでいます。
+          大学では情報系の学部に所属し、IoTを活用したシステム開発やWebアプリケーション開発に取り組んできました。
+
+          現在は卒業研究として、生成AIを活用したBCP（事業継続計画）発動時の意思決定支援システムの開発と、その有効性の検証を行っています。
+          社会課題の解決につながるシステム開発に興味があり、これまで培ってきた横断的な知識を活かして、フロントエンド・バックエンド・組み込み開発まで幅広い領域に挑戦しています。
         </p>
 
         <ul className={styles.links}>
           <li>
             <a
-              href="https://github.com/your-account"
+              href="https://github.com/Taito1608"
               target="_blank"
               rel="noopener noreferrer"
             >
               Github
-            </a>
-          </li>
-
-          <li>
-            <a
-              href="https://qiita.com/your-account"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Qiita
             </a>
           </li>
         </ul>
