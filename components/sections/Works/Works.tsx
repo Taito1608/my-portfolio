@@ -57,12 +57,13 @@ export default function Works() {
           variants={list}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.2 }}
         >
           {works.map((work) => (
             <motion.div
               key={work.id}
               variants={item}
+              viewport={{ once: true, amount: 0.2 }}
               onClick={() => setSelectedWork(work)}
             >
               <WorkCard
