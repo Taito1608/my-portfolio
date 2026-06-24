@@ -23,7 +23,7 @@ export default function Contact() {
           </p>
 
           <a
-            href="mailto:your-email@example.com"
+            href="mailto:taitoyusa.0816@gmail.com"
             className={styles.mailButton}
           >
             Send Email
@@ -31,7 +31,7 @@ export default function Contact() {
 
           <div className={styles.links}>
             <a
-              href="https://github.com/your-account"
+              href="https://github.com/Taito1608"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -39,19 +39,27 @@ export default function Contact() {
             </a>
 
             <a
-              href="https://qiita.com/your-account"
+              href="https://zenn.dev/taito0816"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Qiita
+              Zenn
             </a>
 
             <a
-              href="https://x.com/your-account"
+              href="https://line.me/ti/p/VYOKfeXB6q"
               target="_blank"
               rel="noopener noreferrer"
             >
-              X
+              LINE
+            </a>
+
+            <a
+              href="https://www.instagram.com/taito_816?igsh=MTdjeW9wbzM0cGlvZw%3D%3D&utm_source=qr"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Instagram
             </a>
           </div>
         </div>
