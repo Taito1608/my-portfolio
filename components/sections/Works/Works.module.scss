@@ -9,19 +9,17 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 4rem;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.grid > div {
+  height: 100%;
 }
 
 @media (min-width: 768px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 5rem 3rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6rem 3rem;
+    gap: 2.5rem;
   }
 }
