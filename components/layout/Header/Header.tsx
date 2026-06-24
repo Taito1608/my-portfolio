@@ -68,7 +68,7 @@ export default function Header() {
               onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
               aria-label="テーマ切り替え"
             >
-              {mounted ? (resolvedTheme === "dark" ? "☼" : "☽") : "☽"}
+              {mounted ? (resolvedTheme === "dark" ? "☼" : "❍") : "❍"}
             </button>
           </div>
         </div>
