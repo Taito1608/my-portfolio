@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import Image from "next/image";
 import { Work } from "@/types/work";
 import { motion, AnimatePresence } from "framer-motion";
@@ -13,9 +14,27 @@ type Props = {
 
 export default function WorksDrawer({
   work,
-
   onClose,
 }: Props) {
+
+  useEffect(() => {
+    if (!work) return;
+
+    const scrollY = window.scrollY;
+
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = "100%";
+
+    return () => {
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+
+      window.scrollTo(0, scrollY);
+    };
+  }, [work]);
+
   return (
     <AnimatePresence>
       {work && (
@@ -72,15 +91,18 @@ export default function WorksDrawer({
             </ul>
 
             <div className={styles.links}>
-              <a
-                href={work.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Github →
-              </a>
+              {work.githubUrl ? (
+                <a
+                  href={work.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Github →
+                </a>
+                ) : null
+              }
 
-              {work.demoUrl && (
+              {work.demoUrl ? (
                 <a
                   href={work.demoUrl}
                   target="_blank"
@@ -88,7 +110,8 @@ export default function WorksDrawer({
                 >
                   Demo →
                 </a>
-              )}
+              ) : null
+              }
             </div>
           </motion.div>
         </>
