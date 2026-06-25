@@ -16,6 +16,7 @@ export const works: Work[] = [
       "Python",
       "Flask",
       "Raspberry Pi",
+      "MariaDB",
       "Arduino",
       "DHT11 Sensor",
     ],
