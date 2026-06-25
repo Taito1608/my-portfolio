@@ -57,8 +57,8 @@ export default function Skills() {
           </h3>
 
           <ul className={styles.skillList}>
-            <li>fastAPI</li>
-            <li>flask</li>
+            <li>FastAPI</li>
+            <li>Flask</li>
             <li>PostgreSQL</li>
             <li>MariaDB</li>
             <li>SQLite</li>
