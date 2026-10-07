@@ -19,9 +19,13 @@
 }
 
 .logo {
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: .1em;
+  display: flex;
+  align-items: center;
+  transition: opacity .3s ease;
+}
+
+.logo:hover {
+  opacity: .7;
 }
 
 .nav {
@@ -74,25 +78,6 @@
 
 .menuButton {
   display: none;
-}
-
-.logoSvg {
-  height: 32px;
-  width: auto;
-  display: block;
-}
-
-.logoSvg path {
-  stroke: var(--color-text);
-  stroke-width: 20px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  fill: none;
-  transition: stroke 0.3s ease;
-}
-
-.logoSvg:hover path {
-  stroke: var(--color-sub-text);
 }
 
 @media (max-width: 768px) {

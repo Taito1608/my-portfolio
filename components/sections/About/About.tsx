@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Container from "@/components/layout/Container/Container";
+import Logo from "@/components/common/Logo/Logo";
 import { fadeUp } from "@/components/common/Motion/fadeUp";
 import styles from "./About.module.scss";
 
@@ -21,12 +22,17 @@ export default function About() {
         </h2>
 
         <div className={styles.profile}>
-          <h3 className={styles.name}>
-            遊佐 大翔
-          </h3>
-          <p className={styles.nameEn}>
-            Taito Yusa
-          </p>
+          <span className={styles.avatar}>
+            <Logo size={56} />
+          </span>
+          <div>
+            <h3 className={styles.name}>
+              遊佐 大翔
+            </h3>
+            <p className={styles.nameEn}>
+              Taito Yusa
+            </p>
+          </div>
         </div>
 
         <div className={styles.body}>
