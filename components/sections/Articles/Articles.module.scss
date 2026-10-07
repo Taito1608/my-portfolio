@@ -1,0 +1,85 @@
+@use "../../../styles/abstracts/mixins" as *;
+
+.articles {
+  padding: var(--section-padding) 0;
+}
+
+.heading {
+  @include section-heading;
+}
+
+.list {
+  display: grid;
+  gap: .75rem;
+}
+
+.card {
+  display: block;
+  padding: 1.25rem;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  transition:
+    border-color .3s ease,
+    transform .3s ease;
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--color-sub-text);
+  outline-offset: 4px;
+}
+
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-sub-text);
+  }
+}
+
+.date {
+  color: var(--color-muted);
+  @include mono-label;
+}
+
+.title {
+  margin-top: .25rem;
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.excerpt {
+  margin-top: .5rem;
+  color: var(--color-muted);
+  font-size: var(--font-size-sm);
+  line-height: 1.8;
+
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.empty {
+  color: var(--color-muted);
+}
+
+.more {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+  @include mono-label;
+  font-size: var(--font-size-sm);
+}
+
+.more a {
+  color: var(--color-sub-text);
+  transition: opacity .3s;
+}
+
+.more a:hover {
+  opacity: .6;
+}
