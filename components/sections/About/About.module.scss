@@ -8,6 +8,22 @@
   @include section-heading;
 }
 
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+// アイコンは円の中に余白をとって配置
+.avatar {
+  display: flex;
+  flex-shrink: 0;
+  padding: 10px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+}
+
 .name {
   color: var(--color-text);
   font-size: 1.875rem;
