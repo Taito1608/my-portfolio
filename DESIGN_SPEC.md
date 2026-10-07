@@ -1,82 +1,61 @@
-**デザイン仕様書 — my-portfolio（参考: https://szn.jp）**
+**デザイン仕様書 — my-portfolio**
 
 概要
-- 目的: `szn.jp` を参考にしつつポートフォリオ向けに調整したビジュアル設計とコンポーネント一覧を提供します。
+- 現在の実装に合わせたビジュアル設計とコンポーネント一覧です。デザインを変更したら、このファイルも更新してください。
+- 初期の参考: https://szn.jp
 
-カラーパレット
-- --color-bg: #0F0F10 (ダーク背景)
-- --color-surface: #121215
-- --color-muted: #9CA3AF (中間のグレー)
-- --color-text: #FFFFFF
-- --color-accent: #FFD166 (アクセント：暖色系のイエロー/オレンジ)
-- --color-accent-2: #FF6B6B (補助アクセント)
+カラーパレット（`styles/abstracts/_variables.scss`）
 
-（用途）
-- 背景: `--color-bg` / surface 層はカードやセクションに `--color-surface`。
-- テキスト主要: `--color-text`。補助テキスト: `--color-muted`。
-- 重要CTAやハイライトに `--color-accent` を使用。
+| トークン | ライト | ダーク | 用途 |
+| --- | --- | --- | --- |
+| `--color-background` | `#f5f5f5` | `#112234` | ページ背景 |
+| `--color-surface` | `#f7f7f7` | `#182b40` | カード・ドロワーなどの面 |
+| `--color-text` | `#112234` | `#f5f5f5` | 主要テキスト |
+| `--color-sub-text` | `#3267a9` | `#e3c097` | アクセント・補助テキスト・署名の線 |
+| `--color-border` | `#ececec` | `#2a2a2a` | 区切り線・カードの枠 |
+
+- テーマ切り替えは `next-themes`（`attribute="class"`）。ダークモードでは `<html class="dark">` が付与される。
+- CSS Modules からダーク時のスタイルを書く場合は `:global(html.dark) .xxx` を使う。
 
 タイポグラフィ
-- ベースフォント: `Geist`（既に `app/layout.tsx` で読み込み済み）
-- モノスペース: `Geist_Mono`（コードや小さなラベル用）
-- 推奨サイズ（レスポンシブ）
-  - h1: 48px (desktop), 34px (mobile)
-  - h2: 32px / 24px
-  - body: 18px / 16px
-  - caption: 13px
+- ベースフォント: `Noto Sans JP`（`app/layout.tsx` で `next/font/google` から読み込み）
+- サイズトークン
 
-スペーシング & グリッド
-- ベース間隔: 8px スケールで倍数（8,16,24,32,48,64）
-- コンテナ幅: max-width 1200px, side padding 24px (mobile 16px)
+| トークン | 値 | 主な用途 |
+| --- | --- | --- |
+| `--font-size-xs` | 0.875rem | 小さなラベル |
+| `--font-size-sm` | 1rem | 本文 |
+| `--font-size-md` | 1.5rem | カードタイトル・モバイルメニュー |
+| `--font-size-lg` | 3rem | セクション見出し（h2） |
+| `--font-size-xl` | 5rem | 大見出し |
+
+スペーシング & レイアウト
+- コンテナ: `max-width: 1100px`（`--max-width`）、左右 padding 5rem（モバイル 3rem）
+- ヘッダー高さ: 80px（`--header-height`）
+- セクション上下 padding: 160px（`--section-padding`）
+- ブレークポイント: モバイル 768px / タブレット 1024px（`styles/abstracts/_breakpoints.scss`）
 
 アニメーション指針
-- 全体トランジション: `transition: all 400ms cubic-bezier(.22,.9,.35,1)`
-- 要素フェード/スライド: `framer-motion` を標準化（既存の `FadeIn` を拡張）
-- ページロード/ヒーロー: 手書き署名はSVG stroke-dash を用いた描画アニメ（遅延は0.08s刻みでスタッガー）
-- カードホバー: scale(1.02) + box-shadow で軽い浮遊感
+- イージング: `cubic-bezier(.22, .9, .35, 1)` を基本とする
+- セクションのフェードアップ: `components/common/Motion/fadeUp.ts`（Framer Motion の Variants、`hidden` → `show`）
+- Works カード: `staggerChildren: 0.08` で順番に表示
+- Hero の手書き署名: SVG の stroke-dashoffset による描画アニメーション（7秒）。`prefers-reduced-motion` 時はアニメーションなし
+- カードホバー: `translateY(-6px)` + box-shadow、画像は `scale(1.04)`
 
-コンポーネント一覧（実装優先順）
-- `Signature` — SVG stroke-draw アニメ（Hero に配置）
-  - props: `size?: 'sm'|'md'|'lg'`
-  - アクセシビリティ: `aria-hidden`（装飾的）、代替テキストは別途 `title` コンポーネントを用意
-- `Hero` — 大見出し + `Signature` + サブテキスト
-- `Header` / `Navigation` — 固定または透過ヘッダー、スクロールで背景変化
-- `WorksCard` — プロジェクトカード（画像、タイトル、タグ、short description）
-  - hover: elevation + reveal actions
-- `Button` — Primary / Ghost / Icon variants
-- `Container` — 横幅制御と左右パディング
-- `Footer` — 連絡先と小さな署名リンク
+コンポーネント一覧
+- `Signature` — 手書き署名の SVG。パスは `signaturePath.ts` に定義し、Hero と OG 画像で共有
+- `Header` — 固定ヘッダー。スクロール位置に応じて現在のセクションをハイライト、テーマ切り替えボタン、モバイルではハンバーガーメニュー
+- `Container` — 横幅と左右余白の制御
+- `Footer` — コピーライト
+- `sections/Hero` / `About` / `Skills` / `Works` / `Contact` — 各セクション
+- `WorkCard` / `WorksDrawer` — 制作物カードと、クリックで下から開く詳細ドロワー
 
-SCSS トークン例
-```scss
-:root {
-  --color-bg: #0F0F10;
-  --color-surface: #121215;
-  --color-text: #FFFFFF;
-  --color-muted: #9CA3AF;
-  --color-accent: #FFD166;
-}
-
-.btn-primary {
-  background: var(--color-accent);
-  color: var(--color-bg);
-  transition: transform .18s ease, box-shadow .18s ease;
-}
-```
+データ
+- Works: `data/works.ts`（型: `types/work.ts`）
+- 画像アセット: `public/images/`
 
 アクセシビリティ
-- コントラスト比を確保（主要テキストは背景と十分な比率）
-- キーボード操作でのフォーカススタイルを明確に（outline or box-shadow）
-
-アセット
-- 署名SVGは `components/common/Signature/Signature.tsx` にインライン化済み。
-- 画像アセットは `public/images/` に配置。
-
-実装スニペット（モーション例）
-- `FadeIn` を利用してコンテンツを画面に遅延表示、重要要素は `staggerChildren` を設定。
-
-次の作業
-- ワイヤーフレーム作成（デスクトップ／モバイル）：低解像度のレイアウト図を用意します。
-
----
-ファイル作成: この仕様に差し替えや追加要望があれば教えてください。
+- 主要テキストと背景のコントラスト比を確保する
+- キーボード操作時は `:focus-visible` でフォーカスを明示する
+- ドロワーなどのダイアログは `role="dialog"`・Esc で閉じる・フォーカスを戻す
+- 装飾目的の SVG は `aria-hidden`
