@@ -37,7 +37,7 @@ export const works: Work[] = [
       "Raspberry Pi",
       "MariaDB",
       "Arduino",
-      "DHT11 Sensor",
+      "DHT20",
     ],
   },
 
