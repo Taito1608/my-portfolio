@@ -27,6 +27,8 @@ export default function WorkCard({
           src={work.imageUrl}
           alt=""
           fill
+          // 768px未満は1列、以上は2列（コンテナ最大1100px）
+          sizes="(min-width: 1100px) 450px, (min-width: 768px) 50vw, 100vw"
           className={styles.media}
         />
       </div>
