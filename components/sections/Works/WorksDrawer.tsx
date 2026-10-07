@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useEffectEvent, useRef } from "react";
 import Image from "next/image";
 import { Work } from "@/types/work";
 import { motion, AnimatePresence } from "framer-motion";
@@ -16,6 +16,26 @@ export default function WorksDrawer({
   work,
   onClose,
 }: Props) {
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const handleEscape = useEffectEvent(() => onClose());
+
+  useEffect(() => {
+    if (!work) return;
+
+    // 開いたときに閉じるボタンへフォーカスし、閉じたら元の要素へ戻す
+    const previousFocus = document.activeElement as HTMLElement | null;
+    closeButtonRef.current?.focus();
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") handleEscape();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      previousFocus?.focus({ preventScroll: true });
+    };
+  }, [work]);
 
   useEffect(() => {
     if (!work) return;
@@ -51,6 +71,9 @@ export default function WorksDrawer({
 
           <motion.div
             className={styles.drawer}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="works-drawer-title"
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
@@ -61,8 +84,11 @@ export default function WorksDrawer({
             }}
           >
             <button
+              ref={closeButtonRef}
+              type="button"
               className={styles.close}
               onClick={onClose}
+              aria-label="閉じる"
             >
               ×
             </button>
@@ -76,7 +102,7 @@ export default function WorksDrawer({
               />
             </div>
 
-            <h2>
+            <h2 id="works-drawer-title">
               {work.title}
             </h2>
 

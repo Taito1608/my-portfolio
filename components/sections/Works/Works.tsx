@@ -64,7 +64,6 @@ export default function Works() {
               key={work.id}
               variants={item}
               viewport={{ once: true, amount: 0.2 }}
-              onClick={() => setSelectedWork(work)}
             >
               <WorkCard
                 work={work}
