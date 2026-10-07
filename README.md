@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# my-portfolio
 
-## Getting Started
+Taito Yusa のポートフォリオサイトです。
 
-First, run the development server:
+https://taito1608.vercel.app
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 技術スタック
+
+- [Next.js](https://nextjs.org) 16（App Router / React Compiler）
+- React 19 / TypeScript
+- SCSS（CSS Modules）
+- [Framer Motion](https://motion.dev)（スクロール時のフェードイン、Worksのドロワー）
+- [next-themes](https://github.com/pacocoursey/next-themes)（ライト / ダークテーマ）
+- Vercel（ホスティング）
+
+## セクション構成
+
+| セクション | 内容 |
+| --- | --- |
+| Hero | 手書き署名のSVGストロークアニメーション |
+| About | 自己紹介 |
+| Skills | カテゴリ別のスキル一覧 |
+| Works | 制作物のカード一覧。クリックで詳細ドロワーを表示 |
+| Contact | メール・SNSへのリンク |
+
+## ディレクトリ構成
+
+```
+app/                 レイアウト・ページ・メタデータ
+components/
+  common/            汎用コンポーネント（Signature、モーション定義など）
+  layout/            Header / Footer / Container
+  sections/          各セクション（Hero, About, Skills, Works, Contact）
+data/                表示するデータ（works.ts など）
+types/               型定義
+styles/              SCSSの変数・mixin・ベーススタイル
+public/images/       Worksのサムネイル画像
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 開発
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+http://localhost:3000 で確認できます。
 
-## Learn More
+| コマンド | 内容 |
+| --- | --- |
+| `npm run dev` | 開発サーバーを起動 |
+| `npm run build` | 本番ビルド |
+| `npm run start` | ビルド結果を起動 |
+| `npm run lint` | ESLint を実行 |
 
-To learn more about Next.js, take a look at the following resources:
+## コンテンツの更新
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Works を追加する
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. サムネイル画像を `public/images/` に置く
+2. `data/works.ts` の配列に作品を追加する
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```ts
+{
+  id: 3,
+  title: "作品名",
+  description: "カードに表示する短い説明",
+  detail: "ドロワーに表示する詳しい説明",
+  imageUrl: "/images/xxx.png",
+  githubUrl: "https://github.com/...", // 任意
+  demoUrl: "https://...",              // 任意
+  technologies: ["Next.js", "TypeScript"],
+},
+```
