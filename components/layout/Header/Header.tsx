@@ -6,9 +6,17 @@ import styles from "./Header.module.scss";
 
 const subscribeNoop = () => () => {};
 
+const navItems = [
+  { id: "about", label: "About" },
+  { id: "skills", label: "Skills" },
+  { id: "works", label: "Works" },
+  { id: "contact", label: "Contact" },
+];
+
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   // サーバー描画時はfalse、クライアントではtrue（テーマはクライアントでしか確定しないため）
   const mounted = useSyncExternalStore(
     subscribeNoop,
@@ -39,6 +47,16 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsMenuOpen(false);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isMenuOpen]);
+
   return (
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}>
         <div className={styles.inner}>
@@ -58,11 +76,21 @@ export default function Header() {
 
           <div className={styles.right}>
             <nav>
-              <ul className={styles.nav}>
-                <li><a href="#about" className={activeSection === "about" ? styles.active : ""}>About</a></li>
-                <li><a href="#skills" className={activeSection === "skills" ? styles.active : ""}>Skills</a></li>
-                <li><a href="#works" className={activeSection === "works" ? styles.active : ""}>Works</a></li>
-                <li><a href="#contact" className={activeSection === "contact" ? styles.active : ""}>Contact</a></li>
+              <ul
+                id="global-nav"
+                className={`${styles.nav} ${isMenuOpen ? styles.open : ""}`}
+              >
+                {navItems.map((item) => (
+                  <li key={item.id}>
+                    <a
+                      href={`#${item.id}`}
+                      className={activeSection === item.id ? styles.active : ""}
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </nav>
             <button
@@ -71,6 +99,17 @@ export default function Header() {
               aria-label="テーマ切り替え"
             >
               {mounted ? (resolvedTheme === "dark" ? "☼" : "❍") : "❍"}
+            </button>
+            <button
+              type="button"
+              className={`${styles.menuButton} ${isMenuOpen ? styles.menuButtonOpen : ""}`}
+              onClick={() => setIsMenuOpen((open) => !open)}
+              aria-label={isMenuOpen ? "メニューを閉じる" : "メニューを開く"}
+              aria-expanded={isMenuOpen}
+              aria-controls="global-nav"
+            >
+              <span />
+              <span />
             </button>
           </div>
         </div>
