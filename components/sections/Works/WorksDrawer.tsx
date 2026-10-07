@@ -83,64 +83,66 @@ export default function WorksDrawer({
               ease: [0.22, 0.9, 0.35, 1],
             }}
           >
-            <button
-              ref={closeButtonRef}
-              type="button"
-              className={styles.close}
-              onClick={onClose}
-              aria-label="閉じる"
-            >
-              ×
-            </button>
+            <div className={styles.inner}>
+              <button
+                ref={closeButtonRef}
+                type="button"
+                className={styles.close}
+                onClick={onClose}
+                aria-label="閉じる"
+              >
+                ×
+              </button>
 
-            <div className={styles.imageWrapper}>
-              <Image
-                src={work.imageUrl}
-                alt={work.title}
-                fill
-                sizes="(min-width: 800px) 800px, 100vw"
-                className={styles.image}
-              />
-            </div>
+              <div className={styles.imageWrapper}>
+                <Image
+                  src={work.imageUrl}
+                  alt={work.title}
+                  fill
+                  sizes="(min-width: 768px) 720px, 100vw"
+                  className={styles.image}
+                />
+              </div>
 
-            <h2 id="works-drawer-title">
-              {work.title}
-            </h2>
+              <h2 id="works-drawer-title" className={styles.title}>
+                {work.title}
+              </h2>
 
-            <p className={styles.detail}>
-              {work.detail}
-            </p>
+              <p className={styles.detail}>
+                {work.detail}
+              </p>
 
-            <ul className={styles.techList}>
-              {work.technologies?.map((technology) => (
-                <li key={technology}>
-                  {technology}
-                </li>
-              ))}
-            </ul>
+              <ul className={styles.techList}>
+                {work.technologies?.map((technology) => (
+                  <li key={technology}>
+                    {technology}
+                  </li>
+                ))}
+              </ul>
 
-            <div className={styles.links}>
-              {work.githubUrl ? (
-                <a
-                  href={work.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Github →
-                </a>
+              <div className={styles.links}>
+                {work.githubUrl ? (
+                  <a
+                    href={work.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Github →
+                  </a>
+                  ) : null
+                }
+
+                {work.demoUrl ? (
+                  <a
+                    href={work.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Demo →
+                  </a>
                 ) : null
-              }
-
-              {work.demoUrl ? (
-                <a
-                  href={work.demoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Demo →
-                </a>
-              ) : null
-              }
+                }
+              </div>
             </div>
           </motion.div>
         </>

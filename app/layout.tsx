@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Noto_Sans_JP } from "next/font/google";
+import { JetBrains_Mono, Noto_Sans_JP } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import Header from "@/components/layout/Header/Header";
 import Footer from "@/components/layout/Footer/Footer";
@@ -7,6 +7,12 @@ import "./globals.scss";
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
+});
+
+// 見出しやラベルなど英字部分に使う等幅フォント
+const jetBrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
 });
 
 const siteUrl = "https://taito1608.vercel.app";
@@ -40,7 +46,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja" suppressHydrationWarning>
+    <html lang="ja" className={jetBrainsMono.variable} suppressHydrationWarning>
       <body className={notoSansJP.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />

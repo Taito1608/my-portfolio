@@ -2,22 +2,38 @@
   --color-background: #f5f5f5;
   --color-text: #112234;
   --color-sub-text: #3267a9;
-  --color-border: #ececec;
-  --color-surface: #f7f7f7;
-  --max-width: 1100px;
-  --header-height: 80px;
-  --section-padding: 160px;
-  --font-size-xs: 0.875rem;
-  --font-size-sm: 1rem;
-  --font-size-md: 1.5rem;
-  --font-size-lg: 3rem;
+  --color-muted: #556070;
+  --color-border: #e2e4e8;
+  --color-surface: #fbfbfb;
+  --max-width: 1000px;
+  --header-height: 64px;
+  --gutter: 1rem;
+  --section-padding: 4.5rem;
+  --font-size-xs: 0.8125rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 0.9375rem;
+  --font-size-md: 1.125rem;
+  --font-size-lg: 1.5rem;
   --font-size-xl: 5rem;
+  --radius: 12px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-height: 80px;
+    --gutter: 2rem;
+    --section-padding: 7.5rem;
+    --font-size-base: 1rem;
+    --font-size-md: 1.25rem;
+    --font-size-lg: 2rem;
+  }
 }
 
 html.dark {
   --color-background: #112234;
   --color-text: #f5f5f5;
   --color-sub-text: #e3c097;
-  --color-border: #2a2a2a;
+  --color-muted: #b3bdca;
+  --color-border: #2a3d52;
   --color-surface: #182b40;
 }

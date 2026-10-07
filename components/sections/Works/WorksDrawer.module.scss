@@ -1,3 +1,5 @@
+@use "../../../styles/abstracts/mixins" as *;
+
 .overlay {
   position: fixed;
   inset: 0;
@@ -12,15 +14,15 @@
   left: 0;
   width: 100%;
   max-height: 90vh;
-  backdrop-filter: saturate(140%);
+  max-height: 90dvh;
   overflow-y: auto;
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
   background: var(--color-background);
   box-shadow: 0 -10px 40px rgba(0,0,0,0.08);
-  border-top: 1px solid rgba(0,0,0,0.06);
-  border-radius: 24px 24px 0 0;
-  padding: 3rem;
+  border-top: 1px solid var(--color-border);
+  border-radius: 16px 16px 0 0;
+  padding: 1.25rem var(--gutter) 2.5rem;
   z-index: 101;
 }
 
@@ -32,70 +34,85 @@
 :global(html.dark) .drawer {
   background: var(--color-surface);
   box-shadow: 0 -10px 40px rgba(0,0,0,0.6);
-  border-top: 1px solid rgba(255,255,255,0.08);
 }
 
+.inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+// スクロールしても右上に留まる。負のmarginで下の画像を押し下げない
 .close {
-  position: fixed;
-  top: 2rem;
-  right: 2rem;
-  background: var(--color-sub-text);
-  color: var(--color-background);
-  border-radius: 50%;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 40px;
   height: 40px;
-  z-index: 102;
+  margin: 0 0 -40px auto;
+  color: var(--color-background);
+  background: var(--color-sub-text);
+  border-radius: 50%;
+  font-size: 1.25rem;
+  line-height: 1;
 }
 
 .imageWrapper {
   position: relative;
   width: 100%;
-  max-width: 800px;
-  margin: 0 auto 2rem;
   aspect-ratio: 16 / 9;
   overflow: hidden;
   border-radius: 8px;
-  margin-bottom: 2rem;
 }
 
 .image {
   object-fit: cover;
 }
 
+.title {
+  margin-top: 1.25rem;
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  line-height: 1.5;
+}
+
 .detail {
-  margin-top: 1.5rem;
-  line-height: 2;
-  color: var(--color-sub-text);
+  margin-top: .75rem;
+  color: var(--color-muted);
+  line-height: 1.9;
 }
 
 .techList {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 2rem;
+  gap: .5rem;
+  margin-top: 1.25rem;
 }
 
 .techList li {
-  color: var(--color-sub-text);
+  padding: .15rem .65rem;
+  color: var(--color-text);
+  font-size: var(--font-size-xs);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
 }
 
 .links {
   display: flex;
-  gap: 2rem;
-  margin-top: 3rem;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  @include mono-label;
+  font-size: var(--font-size-sm);
 }
 
 .links a {
-  font-weight: 700;
+  color: var(--color-sub-text);
+  font-weight: 500;
   transition: opacity .3s;
 }
 
 .links a:hover {
   opacity: .6;
-}
-
-@media (max-width:768px){
-  .drawer {
-    padding: 1.5rem;
-  }
 }

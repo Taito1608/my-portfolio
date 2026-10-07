@@ -5,11 +5,15 @@
 body {
   background: var(--color-background);
   color: var(--color-text);
+  font-size: var(--font-size-base);
+  line-height: 1.8;
+  -webkit-text-size-adjust: 100%;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
 }
 
 html.drawer-open {

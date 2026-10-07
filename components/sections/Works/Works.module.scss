@@ -1,17 +1,17 @@
+@use "../../../styles/abstracts/mixins" as *;
+
 .works {
   padding: var(--section-padding) 0;
 }
 
 .heading {
-  margin-bottom: 5rem;
-  font-size: var(--font-size-lg);
+  @include section-heading;
 }
 
 .grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
-  margin-top: 3rem;
+  gap: 1rem;
 }
 
 .grid > div {
@@ -21,6 +21,6 @@
 @media (min-width: 768px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem;
+    gap: 1.5rem;
   }
 }

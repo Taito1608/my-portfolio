@@ -22,19 +22,21 @@ export default function Skills() {
           Skills
         </h2>
 
-        {skillCategories.map((category) => (
-          <div key={category.title} className={styles.category}>
-            <h3 className={styles.categoryTitle}>
-              {category.title}
-            </h3>
+        <div className={styles.grid}>
+          {skillCategories.map((category) => (
+            <div key={category.title} className={styles.category}>
+              <h3 className={styles.categoryTitle}>
+                {category.title}
+              </h3>
 
-            <ul className={styles.skillList}>
-              {category.skills.map((skill) => (
-                <li key={skill}>{skill}</li>
-              ))}
-            </ul>
-          </div>
-        ))}
+              <ul className={styles.skillList}>
+                {category.skills.map((skill) => (
+                  <li key={skill}>{skill}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </Container>
     </motion.section>
   );
