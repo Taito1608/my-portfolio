@@ -16,14 +16,16 @@ export default function WorkCard({
   onClick,
 }: Props) {
   return (
-    <article
+    <button
+      type="button"
       className={styles.card}
       onClick={onClick}
+      aria-haspopup="dialog"
     >
       <div className={styles.imageWrapper}>
         <Image
           src={work.imageUrl}
-          alt={work.title}
+          alt=""
           fill
           className={styles.media}
         />
@@ -38,6 +40,6 @@ export default function WorkCard({
           {work.description}
         </p>
       </div>
-    </article>
+    </button>
   );
 }
