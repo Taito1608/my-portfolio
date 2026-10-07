@@ -27,8 +27,8 @@ export default function WorkCard({
           src={work.imageUrl}
           alt=""
           fill
-          // 768px未満は1列、以上は2列（コンテナ最大1100px）
-          sizes="(min-width: 1100px) 450px, (min-width: 768px) 50vw, 100vw"
+          // 768px未満は1列、以上は2列（コンテナ最大1000px）
+          sizes="(min-width: 1064px) 500px, (min-width: 768px) 50vw, 100vw"
           className={styles.media}
         />
       </div>
@@ -41,6 +41,10 @@ export default function WorkCard({
         <p className={styles.desc}>
           {work.description}
         </p>
+
+        <span className={styles.more} aria-hidden="true">
+          詳細を見る →
+        </span>
       </div>
     </button>
   );

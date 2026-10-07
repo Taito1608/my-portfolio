@@ -28,6 +28,7 @@
 
 .scroll {
   margin-top: 3rem;
+  font-family: var(--font-mono), monospace;
   color: var(--color-sub-text);
   font-size: 1.1rem;
   font-weight: 600;
@@ -65,8 +66,7 @@
 }
 
 .signatureWrapper {
-  width: 60%;
-  margin-inline: auto;
+  width: 100%;
   animation: fadeIn 0.8s ease 0.1s forwards;
   opacity: 0;
   margin: 6rem 0;

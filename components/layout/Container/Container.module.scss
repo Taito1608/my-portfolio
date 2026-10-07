@@ -1,12 +1,6 @@
 .container {
   width: 100%;
-  max-width: var(--max-width);
+  max-width: calc(var(--max-width) + var(--gutter) * 2);
   margin: 0 auto;
-  padding: 0 5rem;
-}
-
-@media (max-width: 768px) {
-  .container {
-    padding: 0 3rem;
-  }
+  padding: 0 var(--gutter);
 }
