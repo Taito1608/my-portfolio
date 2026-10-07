@@ -4,6 +4,7 @@ import Container from "@/components/layout/Container/Container";
 
 import { motion } from "framer-motion";
 import { fadeUp } from "@/components/common/Motion/fadeUp";
+import { skillCategories } from "@/data/skills";
 import styles from "./Skills.module.scss";
 
 export default function Skills() {
@@ -21,73 +22,19 @@ export default function Skills() {
           Skills
         </h2>
 
-        <div className={styles.category}>
-          <h3 className={styles.categoryTitle}>
-            Languages
-          </h3>
+        {skillCategories.map((category) => (
+          <div key={category.title} className={styles.category}>
+            <h3 className={styles.categoryTitle}>
+              {category.title}
+            </h3>
 
-          <ul className={styles.skillList}>
-            <li>Ruby</li>
-            <li>Python</li>
-            <li>C / C++</li>
-            <li>JavaScript</li>
-            <li>TypeScript</li>
-            <li>SQL</li>
-            <li>Kotlin</li>
-          </ul>
-        </div>
-
-        <div className={styles.category}>
-          <h3 className={styles.categoryTitle}>
-            Frontend
-          </h3>
-
-          <ul className={styles.skillList}>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>Tailwind CSS</li>
-            <li>React</li>
-            <li>Next.js</li>
-          </ul>
-        </div>
-
-        <div className={styles.category}>
-          <h3 className={styles.categoryTitle}>
-            Backend / DB
-          </h3>
-
-          <ul className={styles.skillList}>
-            <li>FastAPI</li>
-            <li>Flask</li>
-            <li>PostgreSQL</li>
-            <li>MariaDB</li>
-            <li>SQLite</li>
-          </ul>
-        </div>
-
-        <div className={styles.category}>
-          <h3 className={styles.categoryTitle}>
-            IoT
-          </h3>
-
-          <ul className={styles.skillList}>
-            <li>Raspberry Pi</li>
-            <li>Arduino</li>
-          </ul>
-        </div>
-
-        <div className={styles.category}>
-          <h3 className={styles.categoryTitle}>
-            Tools
-          </h3>
-
-          <ul className={styles.skillList}>
-            <li>Git</li>
-            <li>GitHub</li>
-            <li>Docker</li>
-            <li>Vercel</li>
-          </ul>
-        </div>
+            <ul className={styles.skillList}>
+              {category.skills.map((skill) => (
+                <li key={skill}>{skill}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </Container>
     </motion.section>
   );
