@@ -98,6 +98,7 @@ export default function WorksDrawer({
                 src={work.imageUrl}
                 alt={work.title}
                 fill
+                sizes="(min-width: 800px) 800px, 100vw"
                 className={styles.image}
               />
             </div>
