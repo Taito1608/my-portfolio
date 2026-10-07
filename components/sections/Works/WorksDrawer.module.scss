@@ -24,15 +24,15 @@
   z-index: 101;
 }
 
-[data-theme="dark"] .overlay {
+// next-themes は html に .dark クラスを付与する
+:global(html.dark) .overlay {
   background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(4px);
 }
 
-[data-theme="dark"] .drawer {
-  background: rgba(25, 25, 25, 0.9);
+:global(html.dark) .drawer {
+  background: var(--color-surface);
   box-shadow: 0 -10px 40px rgba(0,0,0,0.6);
-  border-top: 1px solid rgba(255,255,255,0.05);
+  border-top: 1px solid rgba(255,255,255,0.08);
 }
 
 .close {
