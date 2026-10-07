@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Container from "@/components/layout/Container/Container";
 import Signature from "@/components/common/Signature/Signature";
 import styles from "./Hero.module.scss";
