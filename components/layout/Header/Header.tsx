@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useSyncExternalStore } from "react";
+import Link from "next/link";
 import { useTheme } from "next-themes";
 import Logo from "@/components/common/Logo/Logo";
 import styles from "./Header.module.scss";
@@ -11,6 +12,7 @@ const navItems = [
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
   { id: "works", label: "Works" },
+  { id: "articles", label: "Articles" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -43,7 +45,7 @@ export default function Header() {
       });
     };
 
-    const sections = ["hero", "about", "skills", "works", "contact"];
+    const sections = ["hero", "about", "skills", "works", "articles", "contact"];
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -61,9 +63,9 @@ export default function Header() {
   return (
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}>
         <div className={styles.inner}>
-          <a href="#hero" className={styles.logo}>
+          <Link href="/#hero" className={styles.logo}>
             <Logo size={40} alt="Taito Yusa" priority />
-          </a>
+          </Link>
 
           <div className={styles.right}>
             <nav>
@@ -73,13 +75,13 @@ export default function Header() {
               >
                 {navItems.map((item) => (
                   <li key={item.id}>
-                    <a
-                      href={`#${item.id}`}
+                    <Link
+                      href={`/#${item.id}`}
                       className={activeSection === item.id ? styles.active : ""}
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {item.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
