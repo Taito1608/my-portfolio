@@ -57,7 +57,8 @@
 }
 
 // zenn-content-css の配色をサイトのテーマに合わせる
-.body {
+// .znc 側の既定値に負けないよう、詳細度を上げて上書きする
+.body:global(.znc) {
   --c-text-link: var(--color-sub-text);
   --c-text-subtle: var(--color-muted);
   --c-border: var(--color-border);
@@ -65,7 +66,7 @@
   font-size: var(--font-size-base);
 }
 
-:global(html.dark) .body {
+:global(html.dark) .body:global(.znc) {
   --c-bg-dim: #1d3249;
   --c-bg-code: #1d3249;
   --c-border-emphasis: #8a97a8;
