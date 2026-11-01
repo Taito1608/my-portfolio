@@ -1,10 +1,6 @@
-import markdownToHtml from "zenn-markdown-html";
-
-// Zennのユーザー名と、記事のMarkdownを管理しているGitHubリポジトリ
+// Zennのユーザー名
 export const ZENN_USERNAME = "taito0816";
 export const ZENN_PROFILE_URL = `https://zenn.dev/${ZENN_USERNAME}`;
-const CONTENT_REPO_RAW =
-  "https://raw.githubusercontent.com/Taito1608/zenn-content/main";
 
 // 記事の取得結果をキャッシュする秒数（新しい記事は最大1時間で反映される）
 const REVALIDATE_SECONDS = 3600;
@@ -61,31 +57,17 @@ export async function getArticles(): Promise<ArticleSummary[]> {
   }
 }
 
-// Zennのfront matter（--- で囲まれた部分）を読み取る
-function parseFrontMatter(markdown: string) {
-  const match = markdown.match(/^---\n([\s\S]*?)\n---\n?/);
-  const data: Record<string, string> = {};
-  if (!match) return { data, body: markdown };
+type ZennArticleResponse = {
+  article?: {
+    emoji?: string;
+    body_html?: string;
+    topics?: { display_name: string }[];
+  };
+};
 
-  for (const line of match[1].split("\n")) {
-    const index = line.indexOf(":");
-    if (index === -1) continue;
-    const key = line.slice(0, index).trim();
-    const value = line.slice(index + 1).trim().replace(/^["']|["']$/g, "");
-    data[key] = value;
-  }
-  return { data, body: markdown.slice(match[0].length) };
-}
-
-const parseTopics = (value = "") =>
-  value
-    .replace(/^\[|\]$/g, "")
-    .split(",")
-    .map((topic) => topic.trim().replace(/^["']|["']$/g, ""))
-    .filter(Boolean);
-
-// 記事本文は、GitHubリポジトリのMarkdownを取得してZenn公式のライブラリでHTMLに変換する
-// Zennのエディタで直接書いた記事など、リポジトリにない記事はnullを返す
+// 記事本文は、Zennが表示用に変換したHTMLをZennのAPIから取得する
+// （記事を管理しているGitHubリポジトリは非公開のため、そこからは取得しない）
+// 取得できなかった場合はnullを返し、記事ページはZennのページへ移動する
 export async function getArticle(slug: string): Promise<Article | null> {
   if (!/^[a-z0-9_-]+$/.test(slug)) return null;
 
@@ -93,24 +75,19 @@ export async function getArticle(slug: string): Promise<Article | null> {
   if (!summary) return null;
 
   try {
-    const res = await fetch(`${CONTENT_REPO_RAW}/articles/${slug}.md`, {
+    const res = await fetch(`https://zenn.dev/api/articles/${slug}`, {
       next: { revalidate: REVALIDATE_SECONDS },
     });
     if (!res.ok) return null;
 
-    const { data, body } = parseFrontMatter(await res.text());
-
-    // 記事内の画像（/images/...）はGitHubリポジトリの画像を参照する
-    const markdown = body.replace(/\]\(\/images\//g, `](${CONTENT_REPO_RAW}/images/`);
-    const html = await markdownToHtml(markdown, {
-      embedOrigin: "https://embed.zenn.studio",
-    });
+    const { article } = (await res.json()) as ZennArticleResponse;
+    if (!article?.body_html) return null;
 
     return {
       ...summary,
-      emoji: data.emoji,
-      topics: parseTopics(data.topics),
-      html,
+      emoji: article.emoji,
+      topics: (article.topics ?? []).map((topic) => topic.display_name),
+      html: article.body_html,
     };
   } catch {
     return null;

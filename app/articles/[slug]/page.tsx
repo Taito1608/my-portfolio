@@ -50,7 +50,7 @@ export default async function ArticlePage({ params }: Props) {
   const article = await getArticle(slug);
 
   if (!article) {
-    // Zennにはあるが、GitHubリポジトリにない記事はZennのページへ移動する
+    // 本文を取得できなかった記事はZennのページへ移動する
     const summary = (await getArticles()).find((a) => a.slug === slug);
     if (summary) redirect(summary.url);
     notFound();
@@ -87,7 +87,7 @@ export default async function ArticlePage({ params }: Props) {
 
           <div
             className={`znc ${styles.body}`}
-            // zenn-markdown-html の出力はライブラリ内でサニタイズ済み
+            // Zennが表示用に変換したHTMLをそのまま表示する
             dangerouslySetInnerHTML={{ __html: article.html }}
           />
           <ZennEmbed />
