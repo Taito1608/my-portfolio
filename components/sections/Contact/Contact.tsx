@@ -47,19 +47,27 @@ export default function Contact() {
             </a>
 
             <a
-              href="https://line.me/ti/p/VYOKfeXB6q"
+              href="https://qiita.com/taito0816"
               target="_blank"
               rel="noopener noreferrer"
             >
-              LINE
+              Qiita
             </a>
 
             <a
-              href="https://www.instagram.com/taito_816?igsh=MTdjeW9wbzM0cGlvZw%3D%3D&utm_source=qr"
+              href="https://x.com/Taito1608"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Instagram
+              X
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/taito1608/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
             </a>
           </div>
         </div>
