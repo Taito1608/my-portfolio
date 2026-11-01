@@ -35,6 +35,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    creator: "@Taito1608",
     title: siteTitle,
     description: siteDescription,
   },
